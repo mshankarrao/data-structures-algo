@@ -95,6 +95,42 @@ public class LinkedList {
 
     }
 
+    public int getNthNodeFromEnd(int n) {
+        Node currentNode = head;
+        int i = 0;
+        Node traversePointer = head;
+        if (head == null) {
+            return -1;
+        }
+        while (currentNode.next != null) {
+            if (i >= n) {
+                traversePointer = traversePointer.next;
+            }
+            currentNode = currentNode.next;
+            i++;
+        }
+        traversePointer = traversePointer.next;
+        return traversePointer.data;
+    }
+
+    public boolean isLoopExist() {
+        Node currentNode = head;
+        Node traversePointer = head;
+
+        if (head == null) {
+            return false;
+        }
+        while (currentNode.next != null) {
+
+            if (currentNode.next.next == traversePointer.next) {
+                return true;
+            }
+            currentNode = currentNode.next.next;
+            traversePointer = traversePointer.next;
+        }
+        return false;
+    }
+
 }
 
 class Node {
